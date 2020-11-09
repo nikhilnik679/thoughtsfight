@@ -17,9 +17,6 @@ function getAuthorName($author_id){
   $condition2 = " authors where author_id= '$author_id' ";
   $result =  $obj->readData('authors',$condition2,'name');
   return $result[0]['name'];
-  // echo "<pre>";
-  // print_r($result);
-  // return 1;
 }
 
 ?>
@@ -34,7 +31,7 @@ function getAuthorName($author_id){
               <hr>
               <p class='articleText'><?= $list['date_published']; ?></p>
               <p class='articleText'><?= getAuthorName($list['author_id']); ?></p>
-              <p class='articleText'><?= $list['article_body']; ?></p>
+              <p class='articleText'><?= substr($list['article_body'],0, 120);?></p>
             
           <?php endforeach; ?>
       </div>
