@@ -28,12 +28,18 @@ class dbConnect
         $this->connection = null;
     }
 
-    public function readData($table, $condition = 1)
+    public function readData($table, $condition = 1, $col_name = 1)
     {
         try {
             $conn = $this->openConnection();
-
-            $sql = "select * from $table $condition";
+            
+             if($col_name == 1){
+                $all = '*';
+             }else{
+                $all = $col_name;
+             }
+            
+            $sql = "select $all from $table $condition ";
 
             $stmt = $conn->prepare($sql);
             $stmt->execute();
@@ -75,7 +81,7 @@ class dbConnect
     {
         try {
             $conn = $this->openConnection();
-            $sql = "delete from $table where $condition ";
+            $sql = "delete from $table $condition ";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
         } catch (PDOException $e) {

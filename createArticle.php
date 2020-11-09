@@ -16,6 +16,7 @@ if (isset($_POST['create'])) {
 	$value = " '$blog', '$title'";
 
 	$result = $obj1->createData($table, $field, $value);
+	die();
 	echo "<script>location.href='index.php';</script>";
 }
 ?>

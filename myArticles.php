@@ -5,11 +5,11 @@ include "dbConnect.php";
 
 session_start();
 $author = $_SESSION['username'] ;
-
+$author_id = $_SESSION['author_id'] ;
 $obj = new dbConnect();
 $table = 'articles';
-$condition = '';
-$result = $obj->readData($table);
+$condition = " where `author_id`= '$author_id' ";
+$result = $obj->readData($table,$condition);
 ?>
 
 <div class="container content-box">

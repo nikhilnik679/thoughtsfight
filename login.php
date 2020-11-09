@@ -18,6 +18,7 @@ if (isset($_POST['login'])) {
 		if (!empty($row)) {
 			session_start();
 			$_SESSION['username'] = $row[0]['username'];
+			$_SESSION['author_id'] = $row[0]['author_id'];
 			echo "<script>location.href='index.php';</script>";
 		} else {
 			$msg = "Invalid username and password!";
