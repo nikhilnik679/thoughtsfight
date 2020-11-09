@@ -3,7 +3,11 @@ include 'header.php';
 include 'footer.php';
 include 'dbConnect.php';
 
-$obj1 = new dbConnect();
+session_start();
+$author = $_SESSION['username'];
+$author_id = $_SESSION['author_id'];
+
+$obj = new dbConnect();
 $table = 'articles';
 $data = '';
 $result = '';
@@ -12,11 +16,11 @@ if (isset($_POST['create'])) {
 	$title = $_POST['blog-title'];
 	$blog = $_POST['blog'];
 
-	$field = "`article_body`, `article_title`";
-	$value = " '$blog', '$title'";
+	$field = "`article_body`, `article_title`, `author_id`";
+	$value = " '$blog', '$title', '$author_id' ";
 
-	$result = $obj1->createData($table, $field, $value);
-	die();
+	$result = $obj->createData($table, $field, $value);
+
 	echo "<script>location.href='index.php';</script>";
 }
 ?>
