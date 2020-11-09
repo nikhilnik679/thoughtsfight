@@ -9,7 +9,7 @@ $result = '';
 
 if (isset($_REQUEST['id'])) {
     $id = $_REQUEST['id'];
-    $condition = "`article_id`= '$id' ";
+    $condition = " where `article_id`= '$id' ";
     $result = $obj->readData($table, $condition);
 }
 

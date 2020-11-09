@@ -12,11 +12,10 @@ if (isset($_POST['login'])) {
 	$password = trim($_POST['password']);
 
 	if ($username != "" && $password != "") {
-		$condition = "`username`= '$username' and `password`= '$password'";
+		$condition = " where  `username`= '$username' and `password`= '$password'";
 
 		$row = $obj->readData($table, $condition);
 		if (!empty($row)) {
-			echo "done";
 			session_start();
 			$_SESSION['username'] = $row[0]['username'];
 			echo "<script>location.href='index.php';</script>";

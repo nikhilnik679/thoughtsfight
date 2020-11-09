@@ -33,7 +33,7 @@ class dbConnect
         try {
             $conn = $this->openConnection();
 
-            $sql = "select * from $table where $condition";
+            $sql = "select * from $table $condition";
 
             $stmt = $conn->prepare($sql);
             $stmt->execute();
